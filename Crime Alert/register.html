@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Crime Alert</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: url('artistic-blurry-colorful-wallpaper-background.jpg') center;
+            background-size: cover;
+            display: flex;
+        }
+    </style>
+</head>
+<body >
+    <div class="container">
+        <h1>Crime Alert Web Platform</h1>
+        <h2>Register</h2>
+        <form action="register.php" method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="text" name="nic" placeholder="NIC Number" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="district" placeholder="District" required>        
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="repassword" placeholder="Confirm Password" required>
+            Are You?
+            <select name="role" required>
+                <option value="citizen">Citizen</option>
+                <option value="law_enforcement">Law Enforcement</option>
+            </select>
+            <button type="submit">Register</button>
+            <button type="reset">Reset</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report a Crime</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-image: url('33583.jpg'); background-size:cover">
+    <nav>
+        <h2>Crime Alert</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="report_crime.html">Report a Crime</a></li>
+            <li><a href="view_crimes.html">View Crimes</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        </ul>
+    </nav>
+        <div class="container" >
+            <h2>Report a Crime</h2>
+            <form action="report_crime.php" method="POST" enctype="multipart/form-data">
+                <input type="text" name="title" placeholder="Crime Title" required>
+                <textarea name="description" placeholder="Describe the crime" required></textarea>
+                
+                Crime's District
+                <select name="district" required>
+                    <option value="Empty">-Empty-</option>
+                    <option value="Ampara">Ampara</option>
+                    <option value="Anuradhapura">Anuradhapura</option>
+                    <option value="Badulla">Badulla</option>
+                    <option value="Batticaloa">Batticaloa</option>
+                    <option value="Colombo">Colombo</option>
+                    <option value="Galle">Galle</option>
+                    <option value="Gampaha">Gampaha</option>
+                    <option value="Hambantota">Hambantota</option>
+                    <option value="Jaffna">Jaffna</option>
+                    <option value="Kalutara">Kalutara</option>
+                    <option value="Kandy">Kandy</option>
+                    <option value="Kegalle">Kegalle</option>
+                    <option value="Kilinochchi">Kilinochchi</option>
+                    <option value="Kurunegala">Kurunegala</option>
+                    <option value="Mannar">Mannar</option>
+                    <option value="Matale">Matale</option>
+                    <option value="Matara">Matara</option>
+                    <option value="Monaragala">Monaragala</option>
+                    <option value="Mullaitivu">Mullaitivu</option>
+                    <option value="NuwaraEliya">NuwaraEliya</option>
+                    <option value="Polonnaruwa">Polonnaruwa</option>
+                    <option value="Puttalam">Puttalam</option>
+                    <option value="Ratnapura">Ratnapura</option>
+                    <option value="Trincomalee">Trincomalee</option>
+                    <option value="Vavuniya">Vavuniya</option>
+                </select>
+                
+                Crime Priority
+                <select name="category" required>
+                    <option value="low">Low Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+            
+                <label for="photo">Upload Crime Image:</label>
+                <input type="file" name="photo" accept="image/*" required>
+            
+                <button type="submit">Submit Report</button>
+                <button type="reset">Reset</button>
+            </form>
+        </div>
+</body>
+</html>

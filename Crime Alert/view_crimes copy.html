@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Crimes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-image: url('2149051319.jpg'); background-size:cover">
+    <nav>
+        <h2>Crime Alert</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="report_crime.html">Report a Crime</a></li>
+            <li><a href="view_crimes.html">View Crimes</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Published Crimes</h2>
+        <div id="crime-list"></div>
+    </div>
+
+    <script>
+        fetch('view_crimes.php')
+            .then(response => response.json())
+            .then(data => {
+                let crimeList = document.getElementById('crime-list');
+                data.forEach(crime => {
+                    let crimeDiv = document.createElement('div');
+                    crimeDiv.classList.add('crime');
+                    crimeDiv.innerHTML = `
+                        <h3 style="color: black;">${crime.title}</h3>
+                        <p style="color: black;"><strong>Category:</strong> ${crime.category}</p>
+                        <p style="color: black;">${crime.description}</p>
+                        <p style="color: black;"><strong>Location:</strong> ${crime.district}</p>
+                        <p style="color: black;"><strong>Date:</strong> ${crime.date}</p>
+                        <p style="color: black;"><strong>Leading Votes:</strong> ${crime.leading_votes}</p>
+                        <p style="color: black;"><strong>Misleading Votes:</strong> ${crime.misleading_votes}</p>
+                        ${crime.photo ? `<img src="${crime.photo}" alt="Crime Photo" style="max-width:100%;">` : ""}
+                        <button onclick="vote(${crime.id}, 'leading')">Leading</button>
+                        <button onclick="vote(${crime.id}, 'misleading')">Misleading</button>
+                    `;
+                    crimeList.appendChild(crimeDiv);
+                });
+            });
+
+        function vote(crimeId, voteType) {
+            fetch('vote.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `crime_id=${crimeId}&vote=${voteType}`
+            }).then(response => response.text())
+            .then(alert);
+        }
+    </script>
+</body>
+</html>

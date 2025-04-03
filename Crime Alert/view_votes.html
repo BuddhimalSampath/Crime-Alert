@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Votes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Crime Reports & Votes</h2>
+        <div id="crime-votes-list"></div>
+    </div>
+
+    <script>
+        fetch('view_votes.php')
+            .then(response => response.json())
+            .then(data => {
+                let crimeVotesList = document.getElementById('crime-votes-list');
+                data.forEach(crime => {
+                    let crimeDiv = document.createElement('div');
+                    crimeDiv.classList.add('crime');
+                    crimeDiv.innerHTML = `
+                        <h3>${crime.title}</h3>
+                        <p><strong>Category:</strong> ${crime.category}</p>
+                        <p>${crime.description}</p>
+                        <p><strong>Location:</strong> ${crime.location}</p>
+                        <p><strong>Date:</strong> ${crime.date}</p>
+                        <p><strong>Leading Votes:</strong> ${crime.leading_votes}</p>
+                        <p><strong>Misleading Votes:</strong> ${crime.misleading_votes}</p>
+                    `;
+                    crimeVotesList.appendChild(crimeDiv);
+                });
+            });
+    </script>
+</body>
+</html>
